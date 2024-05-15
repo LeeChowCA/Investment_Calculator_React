@@ -25,11 +25,14 @@ function App() {
         })
     }
 
+    let isValid = initValue.annualInvestment > 0 && initValue.expectedReturn > 0 && initValue.duration > 0;
+
     return (
         <>
             <Header></Header>
             <CalBody initValue={initValue} handleChange={handleChange}></CalBody>
-            <Result calElements={initValue}></Result>
+            {isValid && <Result calElements={initValue}></Result>}
+            {!isValid && <p style={{ textAlign: "center" }}>please input a valid value</p>}
         </>
     )
 }
